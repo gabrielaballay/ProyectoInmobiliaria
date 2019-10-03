@@ -1,11 +1,11 @@
 ﻿<!DOCTYPE html>
 
-<html>
+<html lang="es">
 <head>
     <meta name="viewport" content="width=device-width" />
-    <link href="~/lib/boostrap/css/bootstrap.css" rel="stylesheet" />
-    <link href="~/lib/css/estilos.css" rel="stylesheet" />
-    <link href="~/lib/css/fontello.css" rel="stylesheet" />
+    <link rel="stylesheet" href="~/lib/boostrap/css/bootstrap.css"/>
+    <link rel="stylesheet" href="~/lib/css/estilos.css" />
+    <link rel="stylesheet" href="~/lib/css/fontello.css" />
     <title>@ViewBag.Title</title>
 
 </head>
@@ -17,19 +17,25 @@
                     <h2>Menu</h2>
                 </div>
                 <nav class="menu d-flex d-sm-block justify-content-center flex-wrap">
-                    <a href="#"><i class="icon-direction"></i><span>Inicio</span></a>
-                    <a href="#"><i class="icon-user"></i><span>Propietarios</span></a>
-                    <a href="#"><i class="icon-building"></i><span>Inmuebles</span></a>
-                    <a href="#"><i class="icon-handshake-o"></i><span>Alquiler</span></a>
-                    <a href="#"><i class="icon-users"></i><span>Inquilinos</span></a>
+                    <a asp-controller="Home" asp-action="Index"><i class="icon-direction"></i><span>Inicio</span></a>
+                    <a asp-controller="Propietario" asp-action="Index"><i class="icon-user"></i><span>Propietarios</span></a>
+                    <a asp-controller="Inmueble" asp-action="Index"><i class="icon-building"></i><span>Inmuebles</span></a>
+                    <a asp-controller="Alquiler"><i class="icon-handshake-o"></i><span>Alquiler</span></a>
+                    <a asp-controller="Inquilino" asp-action="Index"><i class="icon-users"></i><span>Inquilinos</span></a>
                     <a href="#"><i class="icon-logout"></i><span>Salir</span></a>
                 </nav>
             </div>
-        </div>
-    </div>
 
-    <div>
-        @RenderBody()
+            <main class="main col">
+                <div class="row">
+                    <div class="columna col-lg-7">
+                        <div class="widget nueva_entrada">
+                            @RenderBody()
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
     </div>
     <script src="~/lib/jquery/jquery.js"></script>
     <script src="~/lib/boostrap/js/bootstrap.js"></script>

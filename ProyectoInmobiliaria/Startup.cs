@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using System.Security.Claims;
+using ProyectoInmobiliaria.Models;
 
 namespace ProyectoInmobiliaria
 {
@@ -34,7 +35,7 @@ namespace ProyectoInmobiliaria
                 options.AddPolicy("Administrador", policy => policy.RequireClaim(ClaimTypes.Role, "Administrador"));
             });
             services.AddMvc();
-            //services.AddTransient<IRepositorio<Propietario>, RepositorioPropietario>();
+            services.AddTransient<IRepositorio<Propietario>, RepositorioPropietario>();
            // services.AddTransient<IRepositorioPropietario, RepositorioPropietario>();
             //services.AddTransient<IRepositorio<Inquilino>, RepositorioInquilino>();
             //services.AddDbContext<DataContext>(options => options.UseSqlServer(configuration["ConnectionStrings:DefaultConnection"]));
