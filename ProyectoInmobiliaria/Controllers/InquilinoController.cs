@@ -4,21 +4,29 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using ProyectoInmobiliaria.Models;
 
 namespace ProyectoInmobiliaria.Controllers
 {
     public class InquilinoController : Controller
     {
+        IRepositorio<Inquilino> repo;
+        public InquilinoController(IRepositorio<Inquilino> repositorio)
+        {
+            repo = repositorio;
+        }
         // GET: Inquilino
         public ActionResult Index()
         {
-            return View();
+            var inquilinos = repo.ObtenerTodos();
+            return View(inquilinos);
         }
 
         // GET: Inquilino/Details/5
         public ActionResult Details(int id)
         {
-            return View();
+            var inquilino = repo.ObtenerPorId(id);
+            return View(inquilino);
         }
 
         // GET: Inquilino/Create
@@ -30,16 +38,25 @@ namespace ProyectoInmobiliaria.Controllers
         // POST: Inquilino/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public ActionResult Create(Inquilino inquilino)
         {
             try
             {
-                // TODO: Add insert logic here
-
-                return RedirectToAction(nameof(Index));
+                if (ModelState.IsValid)
+                {
+                    repo.Alta(inquilino);
+                    TempData["id"] = inquilino.IdInquilino;
+                    return RedirectToAction(nameof(Index));
+                }
+                else
+                {
+                    return View();
+                }
             }
-            catch
+            catch (Exception e)
             {
+                ViewBag.StackTrace = e.StackTrace;
+                ViewBag.Error = e.Message;
                 return View();
             }
         }
@@ -47,22 +64,32 @@ namespace ProyectoInmobiliaria.Controllers
         // GET: Inquilino/Edit/5
         public ActionResult Edit(int id)
         {
-            return View();
+            var inquilino = repo.ObtenerPorId(id);
+            return View(inquilino);
         }
 
         // POST: Inquilino/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        public ActionResult Edit(int id, Inquilino inquilino)
         {
             try
             {
-                // TODO: Add update logic here
+                if (ModelState.IsValid)
+                {                   
+                    repo.Modificacion(inquilino);
+                    return RedirectToAction(nameof(Index));
+                }
+                else
+                {
+                    return View();
+                }
 
-                return RedirectToAction(nameof(Index));
             }
-            catch
+            catch (Exception e)
             {
+                ViewBag.StackTrace = e.StackTrace;
+                ViewBag.Error = e.Message;
                 return View();
             }
         }
@@ -70,7 +97,7 @@ namespace ProyectoInmobiliaria.Controllers
         // GET: Inquilino/Delete/5
         public ActionResult Delete(int id)
         {
-            return View();
+            return View(repo.ObtenerPorId(id));
         }
 
         // POST: Inquilino/Delete/5
@@ -80,12 +107,21 @@ namespace ProyectoInmobiliaria.Controllers
         {
             try
             {
-                // TODO: Add delete logic here
+                if (ModelState.IsValid)
+                {
+                    repo.Baja(id);
+                    return RedirectToAction(nameof(Index));
+                }
+                else
+                {
+                    return View();
+                }
 
-                return RedirectToAction(nameof(Index));
             }
-            catch
+            catch (Exception e)
             {
+                ViewBag.StackTrace = e.StackTrace;
+                ViewBag.Error = e.Message;
                 return View();
             }
         }

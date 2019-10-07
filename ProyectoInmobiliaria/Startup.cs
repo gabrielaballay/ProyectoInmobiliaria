@@ -35,9 +35,9 @@ namespace ProyectoInmobiliaria
                 options.AddPolicy("Administrador", policy => policy.RequireClaim(ClaimTypes.Role, "Administrador"));
             });
             services.AddMvc();
-            services.AddTransient<IRepositorio<Propietario>, RepositorioPropietario>();
-           // services.AddTransient<IRepositorioPropietario, RepositorioPropietario>();
-            //services.AddTransient<IRepositorio<Inquilino>, RepositorioInquilino>();
+            services.AddTransient<IRepositorio<Propietario>, RepositorioPropietario>();           
+            services.AddTransient<IRepositorio<Inquilino>, RepositorioInquilino>();
+            services.AddTransient<IRepositorio<Inmueble>, RepositorioInmueble>();
             //services.AddDbContext<DataContext>(options => options.UseSqlServer(configuration["ConnectionStrings:DefaultConnection"]));
         }
 

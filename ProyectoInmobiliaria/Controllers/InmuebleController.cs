@@ -4,15 +4,21 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using ProyectoInmobiliaria.Models;
 
 namespace ProyectoInmobiliaria.Controllers
 {
     public class InmuebleController : Controller
     {
+        IRepositorio<Inmueble> repo;
+        public InmuebleController(IRepositorio<Inmueble> repositorio)
+        {
+            repo = repositorio;
+        }
         // GET: Inmueble
         public ActionResult Index()
-        {
-            return View();
+        {            
+            return View(repo.ObtenerTodos());
         }
 
         // GET: Inmueble/Details/5
@@ -30,16 +36,27 @@ namespace ProyectoInmobiliaria.Controllers
         // POST: Inmueble/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public ActionResult Create(Inmueble inmueble)
         {
             try
             {
-                // TODO: Add insert logic here
+                if (ModelState.IsValid)
+                {
+                    repo.Alta(inmueble);
+                    TempData["id"] = inmueble.IdInmueble;
+                    return RedirectToAction(nameof(Index));
+                }
+                else
+                {
+                    return View();
+                }
 
-                return RedirectToAction(nameof(Index));
+
             }
-            catch
+            catch (Exception e)
             {
+                ViewBag.StackTrace = e.StackTrace;
+                ViewBag.Error = e.Message;
                 return View();
             }
         }

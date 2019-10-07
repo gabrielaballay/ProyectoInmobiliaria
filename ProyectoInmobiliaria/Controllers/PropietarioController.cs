@@ -98,8 +98,10 @@ namespace ProyectoInmobiliaria.Controllers
                 }
 
             }
-            catch
+            catch (Exception e)
             {
+                ViewBag.StackTrace = e.StackTrace;
+                ViewBag.Error = e.Message;
                 return View();
             }
         }
