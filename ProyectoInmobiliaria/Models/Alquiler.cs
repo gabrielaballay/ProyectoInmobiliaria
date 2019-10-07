@@ -10,7 +10,11 @@ namespace ProyectoInmobiliaria.Models
         public int IdAlquiler { get; set; }
         public DateTime FechaInicio { get; set; }
         public DateTime FechaFin { get; set; }
-        public Inmueble IdInmueble { get; set; }
-        public Inquilino IdInquilino { get; set; }
+        public decimal Monto { get; set; }
+        public int IdInmueble { get; set; }
+        public int IdInquilino { get; set; }
+        public Inmueble casa { get; set; }
+        public Inquilino inquilino { get; set; }
+
     }
 }

@@ -13,11 +13,6 @@
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="IdAlquiler" class="control-label"></label>
-                <input asp-for="IdAlquiler" class="form-control" />
-                <span asp-validation-for="IdAlquiler" class="text-danger"></span>
-            </div>
-            <div class="form-group">
                 <label asp-for="FechaInicio" class="control-label"></label>
                 <input asp-for="FechaInicio" class="form-control" />
                 <span asp-validation-for="FechaInicio" class="text-danger"></span>
@@ -28,11 +23,25 @@
                 <span asp-validation-for="FechaFin" class="text-danger"></span>
             </div>
             <div class="form-group">
+                <label asp-for="Monto" class="control-label"></label>
+                <input asp-for="Monto" class="form-control" />
+                <span asp-validation-for="Monto" class="text-danger"></span>
+            </div>
+            <div class="form-group">
                 <label class="control-label">Inmueble</label>
                 <select class="form-control" name="IdInmueble">
-                    @foreach (var item in (IList<Inmueble>)ViewBag.Propietarios)
+                    @foreach (var item in (IList<Inmueble>)ViewBag.Inmuebles)
                     {
                         <option value="@item.IdInmueble">@(item.Direccion)</option>
+                    }
+                </select>
+            </div>
+            <div class="form-group">
+                <label class="control-label">Propietario</label>
+                <select class="form-control" name="IdInquilino">
+                    @foreach (var item2 in (IList<Inquilino>)ViewBag.Inquilinos)
+                    {
+                        <option value="@item2.IdInquilino">@(item2.Nombre + " " + item2.Apellido)</option>
                     }
                 </select>
             </div>

@@ -11,39 +11,61 @@ namespace ProyectoInmobiliaria.Controllers
     
     public class AlquilerController : Controller
     {
-        private readonly IRepositorioInmueble repo;
+        private readonly IRepositorioInmueble repoInmueble;
+        private readonly IRepositorio<Inquilino> repoInquilino;
+        private readonly IRepositorio<Alquiler> repo;
+
+        public AlquilerController(IRepositorioInmueble repoInmueble, IRepositorio<Inquilino> repoInquilino, IRepositorio<Alquiler> repo) 
+        {
+            this.repoInmueble = repoInmueble;
+            this.repoInquilino = repoInquilino;
+            this.repo = repo;
+        }
 
         // GET: Alquiler
         public ActionResult Index()
         {
-            return View();
+            var alquiler = repo.ObtenerTodos();
+            return View(alquiler);
         }
 
         // GET: Alquiler/Details/5
         public ActionResult Details(int id)
         {
-            return View();
+            var alquiler = repo.ObtenerPorId(id);
+            return View(alquiler);
         }
 
         // GET: Alquiler/Create
         public ActionResult Create()
         {
+            ViewBag.Inmuebles = repoInmueble.ObtenerTodos();
+            ViewBag.Inquilinos = repoInquilino.ObtenerTodos();
             return View();
         }
 
         // POST: Alquiler/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public ActionResult Create(Alquiler alquiler)
         {
             try
             {
-                // TODO: Add insert logic here
-
-                return RedirectToAction(nameof(Index));
+                if (ModelState.IsValid)
+                {
+                    repo.Alta(alquiler);
+                    TempData["id"] = alquiler.IdAlquiler;
+                    return RedirectToAction(nameof(Index));
+                }
+                else
+                {
+                    return View();
+                }
             }
-            catch
+            catch (Exception e)
             {
+                ViewBag.StackTrace = e.StackTrace;
+                ViewBag.Error = e.Message;
                 return View();
             }
         }
@@ -51,46 +73,61 @@ namespace ProyectoInmobiliaria.Controllers
         // GET: Alquiler/Edit/5
         public ActionResult Edit(int id)
         {
-            return View();
+            var alquiler = repo.ObtenerPorId(id);
+            ViewBag.Inmuebles = repoInmueble.ObtenerTodos();
+            ViewBag.Inquilinos = repoInquilino.ObtenerTodos();
+            if (TempData.ContainsKey("Mensaje"))
+                ViewBag.Mensaje = TempData["Mensaje"];
+            if (TempData.ContainsKey("Error"))
+                ViewBag.Error = TempData["Error"];
+            return View(alquiler);
         }
 
         // POST: Alquiler/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        public ActionResult Edit(int id, Alquiler alquiler)
         {
             try
             {
-                // TODO: Add update logic here
-
+                alquiler.IdAlquiler = id;
+                repo.Modificacion(alquiler);
+                TempData["Mensaje"] = "Datos guardados correctamente";
                 return RedirectToAction(nameof(Index));
             }
-            catch
+            catch (Exception ex)
             {
-                return View();
+                ViewBag.Inmuebles = repoInmueble.ObtenerTodos();
+                ViewBag.Inquilinos = repoInquilino.ObtenerTodos();
+                ViewBag.Error = ex.Message;
+                ViewBag.StackTrate = ex.StackTrace;
+                return View(alquiler);
             }
         }
 
         // GET: Alquiler/Delete/5
         public ActionResult Delete(int id)
         {
-            return View();
+            var alquiler = repo.ObtenerPorId(id);
+            return View(alquiler);
         }
 
         // POST: Alquiler/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
+        public ActionResult Delete(int id, Alquiler alquiler)
         {
             try
             {
-                // TODO: Add delete logic here
-
+                repo.Baja(id);
+                TempData["Mensaje"] = "Eliminación realizada correctamente";
                 return RedirectToAction(nameof(Index));
             }
-            catch
+            catch (Exception ex)
             {
-                return View();
+                ViewBag.Error = ex.Message;
+                ViewBag.StackTrate = ex.StackTrace;
+                return View(alquiler);
             }
         }
     }
