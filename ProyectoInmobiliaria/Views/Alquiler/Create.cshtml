@@ -28,6 +28,15 @@
                 <span asp-validation-for="FechaFin" class="text-danger"></span>
             </div>
             <div class="form-group">
+                <label class="control-label">Inmueble</label>
+                <select class="form-control" name="IdInmueble">
+                    @foreach (var item in (IList<Inmueble>)ViewBag.Propietarios)
+                    {
+                        <option value="@item.IdInmueble">@(item.Direccion)</option>
+                    }
+                </select>
+            </div>
+            <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
             </div>
         </form>

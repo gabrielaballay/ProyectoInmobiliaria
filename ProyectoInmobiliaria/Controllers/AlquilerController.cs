@@ -4,11 +4,15 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using ProyectoInmobiliaria.Models;
 
 namespace ProyectoInmobiliaria.Controllers
 {
+    
     public class AlquilerController : Controller
     {
+        private readonly IRepositorioInmueble repo;
+
         // GET: Alquiler
         public ActionResult Index()
         {

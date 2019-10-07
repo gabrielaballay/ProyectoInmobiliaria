@@ -11,7 +11,6 @@ namespace ProyectoInmobiliaria.Models
         int Baja(int id);
         int Modificacion(T t);
         IList<T> ObtenerTodos();
-        T ObtenerPorId(int id);
-        T ObtenerPorEmail(string email);
+        T ObtenerPorId(int id);        
     }
 }

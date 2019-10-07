@@ -74,22 +74,13 @@ namespace ProyectoInmobiliaria.Controllers
         // POST: Propietario/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        public ActionResult Edit(int id, Propietario propietario)
         {
             try
             {
                 if (ModelState.IsValid)
                 {
-                    Propietario p = new Propietario();
-                    p.IdPropietario = Convert.ToInt32(collection["IdPropietario"]);
-                    p.Nombre = collection["Nombre"];
-                    p.Apellido= collection["Apellido"];
-                    p.Dni = collection["Dni"];
-                    p.Direccion=collection["Direccion"];
-                    p.Email= collection["Email"];
-                    p.Telefono = collection["Telefono"];
-
-                    repo.Modificacion(p);
+                    repo.Modificacion(propietario);
                     return RedirectToAction(nameof(Index));
                 }
                 else

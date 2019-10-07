@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace ProyectoInmobiliaria.Models
 {
-    public class RepositorioPropietario : RepositorioBase, IRepositorio<Propietario>
+    public class RepositorioPropietario : RepositorioBase, IRepositorioPropietario
     {
         public RepositorioPropietario(IConfiguration configuration) : base(configuration) { }
         public int Alta(Propietario p)
@@ -137,7 +137,7 @@ namespace ProyectoInmobiliaria.Models
             return res;
         }
 
-        public Propietario ObtenerPorEmail(string emai)
+       public Propietario ObtenerPorEmail(string emai)
         {
             Propietario p = null;
             using (SqlConnection connection = new SqlConnection(connectionStrings))
@@ -168,6 +168,11 @@ namespace ProyectoInmobiliaria.Models
                 }
             }
             return p;
+        }
+
+        public IList<Propietario> BuscarPorNombre(string nombre)
+        {
+            throw new NotImplementedException();
         }
     }
 }
