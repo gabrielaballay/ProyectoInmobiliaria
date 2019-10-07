@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Laura\\Documents\\GitHub\\ProyectoInmobiliaria\\ProyectoInmobiliaria\\ProyectoInmobiliaria.csproj": {}
+    "C:\\Users\\Gabriel\\Desktop\\ProyectoInmobiliaria\\ProyectoInmobiliaria\\ProyectoInmobiliaria\\ProyectoInmobiliaria.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Laura\\Documents\\GitHub\\ProyectoInmobiliaria\\ProyectoInmobiliaria\\ProyectoInmobiliaria.csproj": {
+    "C:\\Users\\Gabriel\\Desktop\\ProyectoInmobiliaria\\ProyectoInmobiliaria\\ProyectoInmobiliaria\\ProyectoInmobiliaria.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Laura\\Documents\\GitHub\\ProyectoInmobiliaria\\ProyectoInmobiliaria\\ProyectoInmobiliaria.csproj",
+        "projectUniqueName": "C:\\Users\\Gabriel\\Desktop\\ProyectoInmobiliaria\\ProyectoInmobiliaria\\ProyectoInmobiliaria\\ProyectoInmobiliaria.csproj",
         "projectName": "ProyectoInmobiliaria",
-        "projectPath": "C:\\Users\\Laura\\Documents\\GitHub\\ProyectoInmobiliaria\\ProyectoInmobiliaria\\ProyectoInmobiliaria.csproj",
-        "packagesPath": "C:\\Users\\Laura\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Laura\\Documents\\GitHub\\ProyectoInmobiliaria\\ProyectoInmobiliaria\\obj\\",
+        "projectPath": "C:\\Users\\Gabriel\\Desktop\\ProyectoInmobiliaria\\ProyectoInmobiliaria\\ProyectoInmobiliaria\\ProyectoInmobiliaria.csproj",
+        "packagesPath": "C:\\Users\\Gabriel\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Gabriel\\Desktop\\ProyectoInmobiliaria\\ProyectoInmobiliaria\\ProyectoInmobiliaria\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\Laura\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Gabriel\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -64,16 +64,10 @@
             }
           },
           "imports": [
-            "net461",
-            "net462",
-            "net47",
-            "net471",
-            "net472",
-            "net48"
+            "net461"
           ],
           "assetTargetFallback": true,
-          "warn": true,
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.0.100\\RuntimeIdentifierGraph.json"
+          "warn": true
         }
       }
     }
