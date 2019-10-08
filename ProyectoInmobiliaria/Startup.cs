@@ -36,8 +36,10 @@ namespace ProyectoInmobiliaria
             });
             services.AddMvc();
             services.AddTransient<IRepositorio<Propietario>, RepositorioPropietario>();
-           // services.AddTransient<IRepositorioPropietario, RepositorioPropietario>();
-            //services.AddTransient<IRepositorio<Inquilino>, RepositorioInquilino>();
+            services.AddTransient<IRepositorioPropietario, RepositorioPropietario>();
+            services.AddTransient<IRepositorio<Inquilino>, RepositorioInquilino>();
+            services.AddTransient<IRepositorioInmueble, RepositorioInmueble>();
+            services.AddTransient<IRepositorio<Alquiler>, RepositorioAlquiler>();
             //services.AddDbContext<DataContext>(options => options.UseSqlServer(configuration["ConnectionStrings:DefaultConnection"]));
         }
 

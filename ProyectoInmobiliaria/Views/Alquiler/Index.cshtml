@@ -21,6 +21,13 @@
             <th>
                 @Html.DisplayNameFor(model => model.FechaFin)
             </th>
+            <th>
+                Direccion
+            </th>
+            <th>
+                Inquilino
+            </th>
+
             <th></th>
         </tr>
     </thead>
@@ -39,10 +46,17 @@
             <td>
                 @Html.DisplayFor(modelItem => item.FechaFin)
             </td>
+            <th>
+                @Html.DisplayFor(modelItem => item.casa.Direccion)
+            </th>
+            <th>
+                @Html.DisplayFor(modelItem => item.inquilino.Apellido)&ensp;
+                @Html.DisplayFor(modelItem => item.inquilino.Apellido)
+            </th>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                @Html.ActionLink("Edit", "Edit", new { id=item.IdAlquiler }) |
+                @Html.ActionLink("Details", "Details", new { id=item.IdAlquiler }) |
+                @Html.ActionLink("Delete", "Delete", new { id=item.IdAlquiler })
             </td>
         </tr>
     }

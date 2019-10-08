@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -21,6 +22,9 @@ namespace ProyectoInmobiliaria.Models
         public decimal Precio { get; set; }
         [Required]
         public string Estado { get; set; }
-        public Propietario IdPropietario { get; set; }
+        [Display(Name = "Dueño")]
+        public int IdPropietario { get; set; }
+        [ForeignKey("PropietarioId")]
+        public Propietario Duenio { get; set; }
     }
 }
