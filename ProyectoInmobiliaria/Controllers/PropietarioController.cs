@@ -78,16 +78,9 @@ namespace ProyectoInmobiliaria.Controllers
         {
             try
             {
-                if (ModelState.IsValid)
-                {
-                    repo.Modificacion(propietario);
-                    return RedirectToAction(nameof(Index));
-                }
-                else
-                {
-                    return View();
-                }
-
+                repo.Modificacion(propietario);
+                return RedirectToAction(nameof(Index));
+               
             }
             catch (Exception e)
             {
