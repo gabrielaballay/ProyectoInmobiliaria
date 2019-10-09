@@ -59,12 +59,16 @@ namespace ProyectoInmobiliaria
             app.UseMvc(routes =>
             {
                 routes.MapRoute(
-                    name: "login",
-                    template: "login/{**accion}",
-                    defaults: new { controller = "Home", action = "Login" });
+                    name: "home",
+                    template: "index/{**accion}",
+                    defaults: new { controller = "Home", action = "Index" });
+                routes.MapRoute(
+                    name: "logout",
+                    template: "logout/{**accion}",
+                    defaults: new { controller = "Home", action = "Logout" });
                 routes.MapRoute(
                     name: "default",
-                    template: "{controller=Home}/{action=Index}/{id?}");
+                    template: "{controller=Home}/{action=Login}/{id?}");
             });
         }
     }

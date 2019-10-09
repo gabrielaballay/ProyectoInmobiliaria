@@ -4,10 +4,10 @@
     ViewData["Title"] = "Index";
 }
 
-<h3>Propietarios</h3>
+<h4 class="mt-2">Propietarios</h4>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create" class="btn btn-outline-primary btn-sm">Crear Nuevo</a>
 </p>
 <table class="table">
     <thead>
@@ -40,10 +40,10 @@
             </td>
             
             <td>
-                @Html.ActionLink("Edit", "Edit", new { id=item.IdPropietario}) |
-                @Html.ActionLink("Details", "Details", new { id=item.IdPropietario }) |
-                @Html.ActionLink("Delete", "Delete", new { id=item.IdPropietario })
-            </td>
+                <span class="btn-outline-secondary btn-sm">@Html.ActionLink("Edit", "Edit", new { id = item.IdPropietario })</span> |
+                <span class="btn-outline-success btn-sm">@Html.ActionLink("Details", "Details", new { id = item.IdPropietario })</span> |
+                <span class="btn-outline-danger btn-sm">@Html.ActionLink("Delete", "Delete", new { id = item.IdPropietario })</span>
+</td>
         </tr>
 }
     </tbody>

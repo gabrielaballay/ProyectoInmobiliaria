@@ -10,34 +10,37 @@
 
 </head>
 <body>
-    <div class="container-fluid">
-        <div class="row">
-            <div class="barra-lateral col-12 col-sm-auto">
-                <div class="">
-                    <h2>Menu</h2>
-                </div>
-                <nav class="menu d-flex d-sm-block justify-content-center flex-wrap">
-                    <a asp-controller="Home" asp-action="Index"><i class="icon-direction"></i><span>Inicio</span></a>
-                    <a asp-controller="Propietario" asp-action="Index"><i class="icon-user"></i><span>Propietarios</span></a>
-                    <a asp-controller="Inmueble" asp-action="Index"><i class="icon-building"></i><span>Inmuebles</span></a>
-                    <a asp-controller="Alquiler"><i class="icon-handshake-o"></i><span>Alquiler</span></a>
-                    <a asp-controller="Inquilino" asp-action="Index"><i class="icon-users"></i><span>Inquilinos</span></a>
-                    <a href="#"><i class="icon-logout"></i><span>Salir</span></a>
-                </nav>
-            </div>
-
-            <main class="main col">
-                <div class="row">
-                    <div class="columna col-lg-7">
-                        <div class="widget nueva_entrada">
-                            @RenderBody()
-                        </div>
-                    </div>
-                </div>
-            </main>
+       <div class="container-fluid">
+           <div class="row">
+               @if (User.IsInRole("Administrador"))
+               {
+                   <div class="barra-lateral col-12 col-sm-auto">
+                       <div class="">
+                           <h2>Menu</h2>
+                       </div>
+                       <nav class="menu d-flex d-sm-block justify-content-center flex-wrap">
+                           <a asp-controller="Home" asp-action="Index"><i class="icon-direction"></i><span>Inicio</span></a>
+                           <a asp-controller="Propietario" asp-action="Index"><i class="icon-user"></i><span>Propietarios</span></a>
+                           <a asp-controller="Inmueble" asp-action="Index"><i class="icon-building"></i><span>Inmuebles</span></a>
+                           <a asp-controller="Alquiler"><i class="icon-handshake-o"></i><span>Alquiler</span></a>
+                           <a asp-controller="Inquilino" asp-action="Index"><i class="icon-users"></i><span>Inquilinos</span></a>
+                           <a asp-controller="Logout"><i class="icon-logout"></i><span>Salir</span></a>
+                       </nav>
+                   </div>
+               }
+               <main class="main col">
+                   <div class="row">
+                       <div class="col-12">
+                           <div class="widget nueva_entrada">
+                               @RenderBody()
+                           </div>
+                       </div>
+                   </div>
+               </main>
+           </div>
         </div>
-    </div>
-    <script src="~/lib/jquery/jquery.js"></script>
-    <script src="~/lib/boostrap/js/bootstrap.js"></script>
-</body>
+        <script src="~/lib/jquery/jquery.js"></script>
+        <script src="~/lib/boostrap/js/bootstrap.js"></script>
+        <script src="~/lib/js/ControlFormulario.js"></script>
+    </body>
 </html>

@@ -78,6 +78,7 @@ namespace ProyectoInmobiliaria.Controllers
         {
             try
             {
+                propietario.IdPropietario = id;
                 repo.Modificacion(propietario);
                 return RedirectToAction(nameof(Index));
                

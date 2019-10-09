@@ -39,27 +39,13 @@ body{
 	font-weight: normal;
 }
 
-/*****MAIN*****/
-
-.main{
-	padding-top: 40px;
+/*************Login***************/
+main .row div .nueva_entrada .row .formulario form{
+    border:1px solid blue;
+    background-color:darkseagreen;
+    padding:10px;
 }
 
-.main .columna {
-	padding: 0 40px;
-}
-
-.main .titulo {
-	color: #262a34;
-	font-size: 25px;
-	font-weight: 500;
-	font-family: "Book Antiqua", Palatino, "Palatino Linotype", "Palatino LT STD", Georgia, serif;
-	margin-bottom: 20px;
-}
-
-.main .widget{
-	margin-bottom: 40px;
-}
 
 
 
