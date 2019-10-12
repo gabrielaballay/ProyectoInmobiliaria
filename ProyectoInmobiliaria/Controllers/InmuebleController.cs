@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using ProyectoInmobiliaria.Models;
@@ -18,6 +19,8 @@ namespace ProyectoInmobiliaria.Controllers
             this.repo = repositorio;
             this.repoPropietario = repoPropietrio;
         }
+
+        [Authorize(Policy = "Administrador")]
         // GET: Inmueble
         public ActionResult Index()
         {
@@ -29,6 +32,7 @@ namespace ProyectoInmobiliaria.Controllers
             return View(lista);
         }
 
+        [Authorize(Policy = "Administrador")]
         // GET: Inmueble/Details/5
         public ActionResult Details(int id)
         {
@@ -36,6 +40,7 @@ namespace ProyectoInmobiliaria.Controllers
             return View(inmueble);
         }
 
+        [Authorize(Policy = "Administrador")]
         // GET: Inmueble/Create
         public ActionResult Create()
         {
@@ -43,6 +48,7 @@ namespace ProyectoInmobiliaria.Controllers
             return View();
         }
 
+        [Authorize(Policy = "Administrador")]
         // POST: Inmueble/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -54,6 +60,7 @@ namespace ProyectoInmobiliaria.Controllers
                 {                    
                     repo.Alta(inmueble);
                     TempData["id"] = inmueble.IdInmueble;
+                    TempData["Mensaje"] = "Se Creo el inmueble con exito";
                     return RedirectToAction(nameof(Index));
                 }
                 else
@@ -69,6 +76,7 @@ namespace ProyectoInmobiliaria.Controllers
             }
         }
 
+        [Authorize(Policy = "Administrador")]
         // GET: Inmueble/Edit/5
         public ActionResult Edit(int id)
         {
@@ -81,6 +89,7 @@ namespace ProyectoInmobiliaria.Controllers
             return View(inmueble);
         }
 
+        [Authorize(Policy = "Administrador")]
         // POST: Inmueble/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -90,7 +99,7 @@ namespace ProyectoInmobiliaria.Controllers
             {
                 inmueble.IdInmueble = id;
                 repo.Modificacion(inmueble);
-                TempData["Mensaje"] = "Datos guardados correctamente";
+                TempData["Mensaje"] = "Se Modifico el inmueble con exito";
                 return RedirectToAction(nameof(Index));
             }
             catch (Exception ex)
@@ -102,6 +111,7 @@ namespace ProyectoInmobiliaria.Controllers
             }
         }
 
+        [Authorize(Policy = "Administrador")]
         // GET: Inmueble/Delete/5
         public ActionResult Delete(int id)
         {
@@ -110,6 +120,7 @@ namespace ProyectoInmobiliaria.Controllers
             return View(inmueble);
         }
 
+        [Authorize(Policy = "Administrador")]
         // POST: Inmueble/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]

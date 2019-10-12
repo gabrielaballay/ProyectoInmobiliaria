@@ -94,3 +94,5 @@ C:\Users\Gabriel\Desktop\ProyectoInmobiliaria\ProyectoInmobiliaria\ProyectoInmob
 C:\Users\Gabriel\Desktop\ProyectoInmobiliaria\ProyectoInmobiliaria\ProyectoInmobiliaria\obj\Debug\netcoreapp2.2\Razor\Views\Propietario\Edit.g.cshtml.cs
 C:\Users\Gabriel\Desktop\ProyectoInmobiliaria\ProyectoInmobiliaria\ProyectoInmobiliaria\obj\Debug\netcoreapp2.2\Razor\Views\Propietario\Index.g.cshtml.cs
 C:\Users\Laura\Documents\GitHub\ProyectoInmobiliaria\ProyectoInmobiliaria\obj\Debug\netcoreapp2.2\Razor\Views\Home\Login.cshtml.g.cs
+C:\Users\Gabriel\Desktop\ProyectoInmobiliaria\ProyectoInmobiliaria\ProyectoInmobiliaria\obj\Debug\netcoreapp2.2\Razor\Views\Home\Login.g.cshtml.cs
+C:\Users\Gabriel\Desktop\ProyectoInmobiliaria\ProyectoInmobiliaria\ProyectoInmobiliaria\obj\Debug\netcoreapp2.2\Razor\Views\Home\permitidos.g.cshtml.cs

@@ -9,9 +9,11 @@
 <p>
     <a asp-action="Create" class="btn btn-outline-primary btn-sm">Crear Nuevo</a>
 </p>
+<span style="color:forestgreen" class="text-center">@ViewBag.Mensaje</span>
+<span style="color:red" class="text-center">@ViewBag.Error</span>
 <table class="table">
     <thead>
-        <tr>            
+        <tr>
             <th>
                 @Html.DisplayNameFor(model => model.FechaInicio)
             </th>
@@ -29,31 +31,31 @@
         </tr>
     </thead>
     <tbody>
-@if (Model != null)
-{
-    foreach (var item in Model)
-    {
-        <tr>            
-            <td>
-                @Html.DisplayFor(modelItem => item.FechaInicio)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.FechaFin)
-            </td>
-            <th>
-                @Html.DisplayFor(modelItem => item.casa.Direccion)
-            </th>
-            <th>
-                @Html.DisplayFor(modelItem => item.inquilino.Apellido)&ensp;
-                @Html.DisplayFor(modelItem => item.inquilino.Apellido)
-            </th>
-            <td>                
-                <span class="btn-outline-secondary btn-sm">@Html.ActionLink("Edit", "Edit", new { id = item.IdAlquiler })</span> |
-                <span class="btn-outline-success btn-sm">@Html.ActionLink("Details", "Details", new { id = item.IdAlquiler })</span> |
-                <span class="btn-outline-danger btn-sm">@Html.ActionLink("Delete", "Delete", new { id = item.IdAlquiler })</span>
-            </td>
-        </tr>
-    }
-}
+        @if (Model != null)
+        {
+            foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.FechaInicio)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.FechaFin)
+                    </td>
+                    <th>
+                        @Html.DisplayFor(modelItem => item.casa.Direccion)
+                    </th>
+                    <th>
+                        @Html.DisplayFor(modelItem => item.inquilino.Apellido)&ensp;
+                        @Html.DisplayFor(modelItem => item.inquilino.Nombre)
+                    </th>
+                    <td>
+                        <span class="btn-outline-secondary btn-sm">@Html.ActionLink("Editar", "Edit", new { id = item.IdAlquiler })</span> |
+                        <span class="btn-outline-success btn-sm">@Html.ActionLink("Detalle", "Details", new { id = item.IdAlquiler })</span> |
+                        <span class="btn-outline-danger btn-sm">@Html.ActionLink("Borrar", "Delete", new { id = item.IdAlquiler })</span>
+                    </td>
+                </tr>
+            }
+        }
     </tbody>
 </table>

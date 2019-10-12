@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using ProyectoInmobiliaria.Models;
@@ -22,13 +23,19 @@ namespace ProyectoInmobiliaria.Controllers
             this.repo = repo;
         }
 
+        [Authorize(Policy = "Administrador")]
         // GET: Alquiler
         public ActionResult Index()
         {
             var alquiler = repo.ObtenerTodos();
+            if (TempData.ContainsKey("Id"))
+                ViewBag.Id = TempData["Id"];
+            if (TempData.ContainsKey("Mensaje"))
+                ViewBag.Mensaje = TempData["Mensaje"];
             return View(alquiler);
         }
 
+        [Authorize(Policy = "Administrador")]
         // GET: Alquiler/Details/5
         public ActionResult Details(int id)
         {
@@ -36,6 +43,7 @@ namespace ProyectoInmobiliaria.Controllers
             return View(alquiler);
         }
 
+        [Authorize(Policy = "Administrador")]
         // GET: Alquiler/Create
         public ActionResult Create()
         {
@@ -44,6 +52,7 @@ namespace ProyectoInmobiliaria.Controllers
             return View();
         }
 
+        [Authorize(Policy = "Administrador")]
         // POST: Alquiler/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -55,6 +64,7 @@ namespace ProyectoInmobiliaria.Controllers
                 {
                     repo.Alta(alquiler);
                     TempData["id"] = alquiler.IdAlquiler;
+                    TempData["Mensaje"] = "Se Creo el contrato de Alquiler con exito";
                     return RedirectToAction(nameof(Index));
                 }
                 else
@@ -70,19 +80,18 @@ namespace ProyectoInmobiliaria.Controllers
             }
         }
 
+        [Authorize(Policy = "Administrador")]
         // GET: Alquiler/Edit/5
         public ActionResult Edit(int id)
         {
             var alquiler = repo.ObtenerPorId(id);
             ViewBag.Inmuebles = repoInmueble.ObtenerTodos();
             ViewBag.Inquilinos = repoInquilino.ObtenerTodos();
-            if (TempData.ContainsKey("Mensaje"))
-                ViewBag.Mensaje = TempData["Mensaje"];
-            if (TempData.ContainsKey("Error"))
-                ViewBag.Error = TempData["Error"];
+           
             return View(alquiler);
         }
 
+        [Authorize(Policy = "Administrador")]
         // POST: Alquiler/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -92,7 +101,7 @@ namespace ProyectoInmobiliaria.Controllers
             {
                 alquiler.IdAlquiler = id;
                 repo.Modificacion(alquiler);
-                TempData["Mensaje"] = "Datos guardados correctamente";
+                TempData["Mensaje"] = "Se edito el Contrato de Alquiler correctamente";
                 return RedirectToAction(nameof(Index));
             }
             catch (Exception ex)
@@ -105,6 +114,7 @@ namespace ProyectoInmobiliaria.Controllers
             }
         }
 
+        [Authorize(Policy = "Administrador")]
         // GET: Alquiler/Delete/5
         public ActionResult Delete(int id)
         {

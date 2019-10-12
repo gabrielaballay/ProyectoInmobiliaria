@@ -5,6 +5,8 @@
 }
 
 <h4>Crear Contrato</h4>
+<span style="color:forestgreen" class="text-center">@ViewBag.Mensaje</span>
+<span style="color:red" class="text-center">@ViewBag.Error</span>
 <hr />
 <div class="row">
     <div class="col-12">
@@ -43,15 +45,15 @@
                         <select class="form-control" name="IdInquilino">
                             @foreach (var item2 in (IList<Inquilino>)ViewBag.Inquilinos)
                             {
-                                <option value="@item2.IdInquilino">@(item2.Nombre + " " + item2.Apellido)</option>
+                                <option value="@item2.IdInquilino">@(item2.Apellido + " " + item2.Nombre)</option>
                             }
                         </select>
                     </div>
                 </div>
             </div>
-                <div class="form-group">
-                    <input type="submit" value="Create" class="btn btn-primary" />
-                </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
         </form>
     </div>
 </div>

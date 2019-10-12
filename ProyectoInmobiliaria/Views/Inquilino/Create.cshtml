@@ -5,6 +5,8 @@
 }
 
 <h4>Crear Inquilino</h4>
+<span style="color:forestgreen" class="text-center">@ViewBag.Mensaje</span>
+<span style="color:red" class="text-center">@ViewBag.Error</span>
 <hr />
 <div class="row">
     <div class="col-12">
@@ -14,13 +16,13 @@
                 <div class="col-12 col-md-4">
                     <p>Datos del Inquilino</p>
                     <div class="form-group">
-                        <label asp-for="Nombre" class="control-label"></label>
-                        <input asp-for="Nombre" class="form-control" required>
+                        <label asp-for="Apellido" class="control-label"></label>
+                        <input asp-for="Apellido" class="form-control" required>
                         <div class="invalid-feedback">Ingrese nombre.</div>
                     </div>
                     <div class="form-group">
-                        <label asp-for="Apellido" class="control-label"></label>
-                        <input asp-for="Apellido" class="form-control" required>
+                        <label asp-for="Nombre" class="control-label"></label>
+                        <input asp-for="Nombre" class="form-control" required>
                         <div class="invalid-feedback">Ingrese apellido.</div>
                     </div>
                     <div class="form-group">

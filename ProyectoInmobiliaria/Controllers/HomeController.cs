@@ -5,6 +5,7 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Cryptography.KeyDerivation;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -23,6 +24,7 @@ namespace ProyectoInmobiliaria.Controllers
             this.propietarios = propietarios;
             this.config = config;
         }
+
         // GET: Home
         public ActionResult Index()
         {
@@ -42,58 +44,66 @@ namespace ProyectoInmobiliaria.Controllers
         {
             try
             {
-                /*string hashed = Convert.ToBase64String(KeyDerivation.Pbkdf2(
+                string hashed = Convert.ToBase64String(KeyDerivation.Pbkdf2(
                     password: loginView.Password,
                     salt: System.Text.Encoding.ASCII.GetBytes(config["Salt"]),
                     prf: KeyDerivationPrf.HMACSHA1,
                     iterationCount: 1000,
-                    numBytesRequested: 256 / 8));*/
+                    numBytesRequested: 256 / 8));
                 var p = propietarios.ObtenerPorEmail(loginView.Email);
-                if (p == null || p.Password !=loginView.Password )
+
+                if (p == null || p.Password != hashed)
                 {
                     ViewBag.Mensaje = "Correo o Contraseña Incorrectos!";
                     return View();
                 }
-                var claims = new List<Claim>
+
+
+                if (loginView.Email == "admin@mail.com" && loginView.Password=="admin")
                 {
-                    new Claim(ClaimTypes.Name, p.Email),
-                    new Claim("FullName", p.Nombre + " " + p.Apellido),
-                    //new Claim(ClaimTypes.Role, p.IdPropietario < 10? "Administrador":"Propietario"),
-                    new Claim(ClaimTypes.Role, "Administrador"),
-                };
+                    var claims = new List<Claim> {
+                        new Claim(ClaimTypes.Name, p.Email),
+                        new Claim("FullName", p.Nombre + " " + p.Apellido),
+                        new Claim(ClaimTypes.Role, "Administrador"),
+                    };
+                    var claimsIdentity = new ClaimsIdentity(
+                        claims, CookieAuthenticationDefaults.AuthenticationScheme);
+                    var authProperties = new AuthenticationProperties
+                    
+                    {
+                        AllowRefresh = true,
 
-                var claimsIdentity = new ClaimsIdentity(
-                    claims, CookieAuthenticationDefaults.AuthenticationScheme);
+                    };
 
-                var authProperties = new AuthenticationProperties
+                    await HttpContext.SignInAsync(
+                        CookieAuthenticationDefaults.AuthenticationScheme,
+                        new ClaimsPrincipal(claimsIdentity),
+                        authProperties);
+                    return RedirectToAction("Index");
+                }
+                else
                 {
-                    //AllowRefresh = <bool>,
-                    // Refreshing the authentication session should be allowed.
-                    AllowRefresh = true,
-                    //ExpiresUtc = DateTimeOffset.UtcNow.AddMinutes(10),
-                    // The time at which the authentication ticket expires. A 
-                    // value set here overrides the ExpireTimeSpan option of 
-                    // CookieAuthenticationOptions set with AddCookie.
+                    var claims = new List<Claim> {
+                        new Claim(ClaimTypes.Name, p.Email),
+                        new Claim("FullName", p.Nombre + " " + p.Apellido),
+                        new Claim(ClaimTypes.Role, "Usuario"),
+                    };
+                    var claimsIdentity = new ClaimsIdentity(
+                        claims, CookieAuthenticationDefaults.AuthenticationScheme);
+                    var authProperties = new AuthenticationProperties
+                    {
+                        AllowRefresh = true,
 
-                    //IsPersistent = true,
-                    // Whether the authentication session is persisted across 
-                    // multiple requests. When used with cookies, controls
-                    // whether the cookie's lifetime is absolute (matching the
-                    // lifetime of the authentication ticket) or session-based.
+                    };
 
-                    //IssuedUtc = <DateTimeOffset>,
-                    // The time at which the authentication ticket was issued.
+                    await HttpContext.SignInAsync(
+                        CookieAuthenticationDefaults.AuthenticationScheme,
+                        new ClaimsPrincipal(claimsIdentity),
+                        authProperties);
+                    return RedirectToAction("permitidos");
+                }
 
-                    //RedirectUri = <string>
-                    // The full path or absolute URI to be used as an http 
-                    // redirect response value.
-                };
-
-                await HttpContext.SignInAsync(
-                    CookieAuthenticationDefaults.AuthenticationScheme,
-                    new ClaimsPrincipal(claimsIdentity),
-                    authProperties);
-                return RedirectToAction("Index");
+                
             }
             catch (Exception ex)
             {
@@ -111,5 +121,12 @@ namespace ProyectoInmobiliaria.Controllers
              return RedirectToAction("Login");            
         }
 
+        [Authorize(Policy = "Usuario")]
+        public ActionResult permitidos()
+        {
+            var identity = (ClaimsIdentity)User.Identity;
+            IEnumerable<Claim> claims = identity.Claims;
+            return View();
+        }
     }
 }

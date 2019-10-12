@@ -6,13 +6,15 @@
 
 <h4 class="mt-2">Listado de Inquilinos</h4>
 
-<p>    
+<p>
     <a asp-action="Create" class="btn btn-outline-primary btn-sm">Crear Nuevo</a>
 </p>
+<span style="color:forestgreen" class="text-center">@ViewBag.Mensaje</span>
+<span style="color:red" class="text-center">@ViewBag.Error</span>
 <table class="table">
     <thead>
         <tr>
-            
+
             <th>
                 @Html.DisplayNameFor(model => model.Nombre)
             </th>
@@ -28,38 +30,38 @@
             <th>
                 @Html.DisplayNameFor(model => model.Telefono)
             </th>
-            
+
             <th></th>
         </tr>
     </thead>
     <tbody>
-@if (Model != null)
-{
-    foreach (var item in Model)
-    {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Nombre)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Apellido)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Dni)
-            </td>            
-            <td>
-                @Html.DisplayFor(modelItem => item.Email)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Telefono)
-            </td>
-            <td>
-                <span class="btn-outline-secondary btn-sm">@Html.ActionLink("Edit", "Edit", new { id = item.IdInquilino })</span> |
-                <span class="btn-outline-success btn-sm">@Html.ActionLink("Details", "Details", new { id = item.IdInquilino })</span> |
-                <span class="btn-outline-danger btn-sm">@Html.ActionLink("Delete", "Delete", new { id = item.IdInquilino })</span>
-            </td>
-        </tr>
-    }
-}
+        @if (Model != null)
+        {
+            foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Nombre)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Apellido)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Dni)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Email)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Telefono)
+                    </td>
+                    <td>
+                        <span class="btn-outline-secondary btn-sm">@Html.ActionLink("Editar", "Edit", new { id = item.IdInquilino })</span> |
+                        <span class="btn-outline-success btn-sm">@Html.ActionLink("Detalle", "Details", new { id = item.IdInquilino })</span> |
+                        <span class="btn-outline-danger btn-sm">@Html.ActionLink("Borrar", "Delete", new { id = item.IdInquilino })</span>
+                    </td>
+                </tr>
+            }
+        }
     </tbody>
 </table>

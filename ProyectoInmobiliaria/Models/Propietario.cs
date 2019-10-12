@@ -16,7 +16,7 @@ namespace ProyectoInmobiliaria.Models
         public string Apellido { get; set; }
         [Required]
         public string Dni { get; set; }
-        [Required, DataType(DataType.Password)]
+        [DataType(DataType.Password)]
         public string Password { get; set; }
         public string Direccion { get; set; }
         [Required, EmailAddress]
