@@ -41,6 +41,7 @@ namespace ProyectoInmobiliaria
             services.AddTransient<IRepositorio<Inquilino>, RepositorioInquilino>();
             services.AddTransient<IRepositorioInmueble, RepositorioInmueble>();
             services.AddTransient<IRepositorio<Alquiler>, RepositorioAlquiler>();
+            services.AddTransient<IRepositorio<Pago>, RepositorioPago>();
             //services.AddDbContext<DataContext>(options => options.UseSqlServer(configuration["ConnectionStrings:DefaultConnection"]));
         }
 

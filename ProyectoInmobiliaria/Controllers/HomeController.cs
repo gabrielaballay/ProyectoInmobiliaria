@@ -52,13 +52,6 @@ namespace ProyectoInmobiliaria.Controllers
                     numBytesRequested: 256 / 8));
                 var p = propietarios.ObtenerPorEmail(loginView.Email);
 
-                if (p == null || p.Password != hashed)
-                {
-                    ViewBag.Mensaje = "Correo o Contraseña Incorrectos!";
-                    return View();
-                }
-
-
                 if (loginView.Email == "admin@mail.com" && loginView.Password=="admin")
                 {
                     var claims = new List<Claim> {
@@ -81,9 +74,9 @@ namespace ProyectoInmobiliaria.Controllers
                         authProperties);
                     return RedirectToAction("Index");
                 }
-                else
+                else if (p != null || p.Password == hashed)
                 {
-                    var claims = new List<Claim> {
+                        var claims = new List<Claim> {
                         new Claim(ClaimTypes.Name, p.Email),
                         new Claim("FullName", p.Nombre + " " + p.Apellido),
                         new Claim(ClaimTypes.Role, "Usuario"),
@@ -101,6 +94,11 @@ namespace ProyectoInmobiliaria.Controllers
                         new ClaimsPrincipal(claimsIdentity),
                         authProperties);
                     return RedirectToAction("permitidos");
+                }
+                else
+                {
+                    ViewBag.Mensaje = "Correo o Contraseña Incorrectos!";
+                    return View();
                 }
 
                 
