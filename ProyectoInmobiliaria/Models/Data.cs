@@ -23,11 +23,11 @@ namespace ProyectoInmobiliaria.Models
                     IdPropietario = reader.GetInt32(0),
                     Nombre = reader["Nombre"].ToString(),
                     Apellido = reader["Apellido"].ToString(),
-                    Dni = reader["Dni"].ToString(),
+                    Dni = reader.GetDecimal(3),
                     Password = reader["Password"].ToString(),
                     Direccion = reader["Direccion"].ToString(),
                     Email = reader["Email"].ToString(),
-                    Telefono = reader["Telefono"].ToString()
+                    Telefono = reader.GetDecimal(7)
                 };
                 res.Add(p);
             }

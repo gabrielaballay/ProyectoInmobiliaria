@@ -127,7 +127,7 @@ namespace ProyectoInmobiliaria.Controllers
 
         [Authorize(Policy = "Administrador")]
         // GET: Propietario/Delete/5
-        public ActionResult Delete(int id)
+        public ActionResult Borrar(int id)
         {
             Propietario p = repo.ObtenerPorId(id);
             return View(p);
@@ -137,7 +137,7 @@ namespace ProyectoInmobiliaria.Controllers
         // POST: Propietario/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
+        public ActionResult Borrar(int id, IFormCollection collection)
         {
             try
             {

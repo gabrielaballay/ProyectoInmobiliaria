@@ -15,14 +15,14 @@ namespace ProyectoInmobiliaria.Models
         [Required]
         public string Apellido { get; set; }
         [Required]
-        public string Dni { get; set; }
+        public decimal Dni { get; set; }
         [DataType(DataType.Password)]
         public string Password { get; set; }
         public string Direccion { get; set; }
         [Required, EmailAddress]
         public string Email { get; set; }
         [Required]
-        public string Telefono { get; set; }    
+        public decimal Telefono { get; set; }    
         
     }
 }

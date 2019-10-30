@@ -9,17 +9,19 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using System.Security.Claims;
 using ProyectoInmobiliaria.Models;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 
 namespace ProyectoInmobiliaria
 {
     public class Startup
     {
-        // This method gets called by the runtime. Use this method to add services to the container.
-        // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
-        /*public Startup(IConfiguration configuration)
+        private readonly IConfiguration configuration;
+        
+        public Startup(IConfiguration configuration)
         {
             this.configuration = configuration;
-        }*/
+        }
 
         public void ConfigureServices(IServiceCollection services)
         {
@@ -42,7 +44,7 @@ namespace ProyectoInmobiliaria
             services.AddTransient<IRepositorioInmueble, RepositorioInmueble>();
             services.AddTransient<IRepositorio<Alquiler>, RepositorioAlquiler>();
             services.AddTransient<IRepositorio<Pago>, RepositorioPago>();
-            //services.AddDbContext<DataContext>(options => options.UseSqlServer(configuration["ConnectionStrings:DefaultConnection"]));
+            services.AddDbContext<DataContext>(options => options.UseSqlServer(configuration["ConnectionStrings:DefaultConnection"]));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
