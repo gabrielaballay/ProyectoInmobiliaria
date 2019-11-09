@@ -91,11 +91,11 @@ namespace ProyectoInmobiliaria.Models
                             IdPropietario = reader.GetInt32(0),
                             Nombre = reader["Nombre"].ToString(),
                             Apellido = reader["Apellido"].ToString(),
-                            Dni = reader["Dni"].ToString(),
+                            Dni = Convert.ToDecimal(reader["Dni"].ToString()),
                             Password = reader["Password"].ToString(),
                             Direccion = reader["Direccion"].ToString(),
                             Email = reader["Email"].ToString(),
-                            Telefono = reader["Telefono"].ToString()
+                            Telefono = Convert.ToDecimal(reader["Telefono"].ToString())
                         };
                     }
                     connection.Close();
@@ -123,11 +123,11 @@ namespace ProyectoInmobiliaria.Models
                             IdPropietario = reader.GetInt32(0),
                             Nombre = reader["Nombre"].ToString(),
                             Apellido = reader["Apellido"].ToString(),
-                            Dni = reader["Dni"].ToString(),
+                            Dni = Convert.ToDecimal(reader["Dni"].ToString()),
                             Password = reader["Password"].ToString(),
                             Direccion = reader["Direccion"].ToString(),
                             Email = reader["Email"].ToString(),
-                            Telefono = reader["Telefono"].ToString()
+                            Telefono = Convert.ToDecimal(reader["Telefono"].ToString())
                         };
                         res.Add(p);
                     }
@@ -157,11 +157,11 @@ namespace ProyectoInmobiliaria.Models
                             IdPropietario = reader.GetInt32(0),
                             Nombre = reader["Nombre"].ToString(),
                             Apellido = reader["Apellido"].ToString(),
-                            Dni = reader["Dni"].ToString(),
+                            Dni = Convert.ToDecimal(reader["Dni"].ToString()),
                             Password = reader["Password"].ToString(),
                             Direccion = reader["Direccion"].ToString(),
                             Email = reader["Email"].ToString(),
-                            Telefono = reader["Telefono"].ToString()
+                            Telefono = Convert.ToDecimal(reader["Telefono"].ToString())
                         };
                     }
                     connection.Close();

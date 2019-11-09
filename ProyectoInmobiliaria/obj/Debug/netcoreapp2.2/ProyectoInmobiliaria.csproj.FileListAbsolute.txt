@@ -31,7 +31,6 @@ C:\Users\Laura\Documents\GitHub\ProyectoInmobiliaria\ProyectoInmobiliaria\obj\De
 C:\Users\Laura\Documents\GitHub\ProyectoInmobiliaria\ProyectoInmobiliaria\obj\Debug\netcoreapp2.2\Razor\Views\Propietario\Create.cshtml.g.cs
 C:\Users\Laura\Documents\GitHub\ProyectoInmobiliaria\ProyectoInmobiliaria\obj\Debug\netcoreapp2.2\Razor\Views\Propietario\Edit.cshtml.g.cs
 C:\Users\Laura\Documents\GitHub\ProyectoInmobiliaria\ProyectoInmobiliaria\obj\Debug\netcoreapp2.2\Razor\Views\Propietario\Details.cshtml.g.cs
-C:\Users\Laura\Documents\GitHub\ProyectoInmobiliaria\ProyectoInmobiliaria\obj\Debug\netcoreapp2.2\Razor\Views\Propietario\Delete.cshtml.g.cs
 C:\Users\Laura\Documents\GitHub\ProyectoInmobiliaria\ProyectoInmobiliaria\obj\Debug\netcoreapp2.2\Razor\Views\Inquilino\Details.cshtml.g.cs
 C:\Users\Laura\Documents\GitHub\ProyectoInmobiliaria\ProyectoInmobiliaria\obj\Debug\netcoreapp2.2\Razor\Views\Inquilino\Create.cshtml.g.cs
 C:\Users\Laura\Documents\GitHub\ProyectoInmobiliaria\ProyectoInmobiliaria\obj\Debug\netcoreapp2.2\Razor\Views\Inquilino\Edit.cshtml.g.cs
@@ -78,7 +77,6 @@ C:\Users\Gabriel\Desktop\ProyectoInmobiliaria\ProyectoInmobiliaria\ProyectoInmob
 C:\Users\Gabriel\Desktop\ProyectoInmobiliaria\ProyectoInmobiliaria\ProyectoInmobiliaria\obj\Debug\netcoreapp2.2\Razor\Views\Pago\Edit.g.cshtml.cs
 C:\Users\Gabriel\Desktop\ProyectoInmobiliaria\ProyectoInmobiliaria\ProyectoInmobiliaria\obj\Debug\netcoreapp2.2\Razor\Views\Pago\Index.g.cshtml.cs
 C:\Users\Gabriel\Desktop\ProyectoInmobiliaria\ProyectoInmobiliaria\ProyectoInmobiliaria\obj\Debug\netcoreapp2.2\Razor\Views\Propietario\Create.g.cshtml.cs
-C:\Users\Gabriel\Desktop\ProyectoInmobiliaria\ProyectoInmobiliaria\ProyectoInmobiliaria\obj\Debug\netcoreapp2.2\Razor\Views\Propietario\Delete.g.cshtml.cs
 C:\Users\Gabriel\Desktop\ProyectoInmobiliaria\ProyectoInmobiliaria\ProyectoInmobiliaria\obj\Debug\netcoreapp2.2\Razor\Views\Propietario\Details.g.cshtml.cs
 C:\Users\Gabriel\Desktop\ProyectoInmobiliaria\ProyectoInmobiliaria\ProyectoInmobiliaria\obj\Debug\netcoreapp2.2\Razor\Views\Propietario\Edit.g.cshtml.cs
 C:\Users\Gabriel\Desktop\ProyectoInmobiliaria\ProyectoInmobiliaria\ProyectoInmobiliaria\obj\Debug\netcoreapp2.2\Razor\Views\Propietario\Index.g.cshtml.cs
@@ -101,3 +99,11 @@ C:\Users\Gabriel\Desktop\ProyectoInmobiliaria\ProyectoInmobiliaria\ProyectoInmob
 C:\Users\Gabriel\Desktop\ProyectoInmobiliaria\ProyectoInmobiliaria\ProyectoInmobiliaria\obj\Debug\netcoreapp2.2\ProyectoInmobiliaria.csprojAssemblyReference.cache
 C:\Users\Gabriel\Desktop\ProyectoInmobiliaria\ProyectoInmobiliaria\ProyectoInmobiliaria\obj\Debug\netcoreapp2.2\Razor\Views\Pago\Details.g.cshtml.cs
 C:\Users\Gabriel\Desktop\ProyectoInmobiliaria\ProyectoInmobiliaria\ProyectoInmobiliaria\obj\Debug\netcoreapp2.2\Razor\Views\Pago\Delete.g.cshtml.cs
+C:\Users\Laura\Documents\GitHub\ProyectoInmobiliaria\ProyectoInmobiliaria\obj\Debug\netcoreapp2.2\Razor\Views\Home\permitidos.cshtml.g.cs
+C:\Users\Laura\Documents\GitHub\ProyectoInmobiliaria\ProyectoInmobiliaria\obj\Debug\netcoreapp2.2\Razor\Views\Pago\Create.cshtml.g.cs
+C:\Users\Laura\Documents\GitHub\ProyectoInmobiliaria\ProyectoInmobiliaria\obj\Debug\netcoreapp2.2\Razor\Views\Pago\Delete.cshtml.g.cs
+C:\Users\Laura\Documents\GitHub\ProyectoInmobiliaria\ProyectoInmobiliaria\obj\Debug\netcoreapp2.2\Razor\Views\Pago\Details.cshtml.g.cs
+C:\Users\Laura\Documents\GitHub\ProyectoInmobiliaria\ProyectoInmobiliaria\obj\Debug\netcoreapp2.2\Razor\Views\Pago\Edit.cshtml.g.cs
+C:\Users\Laura\Documents\GitHub\ProyectoInmobiliaria\ProyectoInmobiliaria\obj\Debug\netcoreapp2.2\Razor\Views\Pago\Index.cshtml.g.cs
+C:\Users\Laura\Documents\GitHub\ProyectoInmobiliaria\ProyectoInmobiliaria\obj\Debug\netcoreapp2.2\Razor\Views\Propietario\Borrar.cshtml.g.cs
+C:\Users\Gabriel\Desktop\ProyectoInmobiliaria\ProyectoInmobiliaria\ProyectoInmobiliaria\obj\Debug\netcoreapp2.2\Razor\Views\Propietario\Borrar.g.cshtml.cs

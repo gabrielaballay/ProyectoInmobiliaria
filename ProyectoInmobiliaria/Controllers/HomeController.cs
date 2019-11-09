@@ -25,6 +25,7 @@ namespace ProyectoInmobiliaria.Controllers
             this.config = config;
         }
 
+        [Authorize(Policy = "Administrador")]
         // GET: Home
         public ActionResult Index()
         {
@@ -74,7 +75,7 @@ namespace ProyectoInmobiliaria.Controllers
                         authProperties);
                     return RedirectToAction("Index");
                 }
-                else if (p != null || p.Password == hashed)
+                else if (loginView.Email==p.Email && p.Password == hashed)
                 {
                         var claims = new List<Claim> {
                         new Claim(ClaimTypes.Name, p.Email),
