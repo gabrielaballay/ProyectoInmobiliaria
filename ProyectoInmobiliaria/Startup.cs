@@ -24,6 +24,7 @@ namespace ProyectoInmobiliaria
             this.configuration = configuration;
         }
 
+
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)

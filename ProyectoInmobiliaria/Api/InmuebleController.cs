@@ -83,14 +83,44 @@ namespace ProyectoInmobiliaria.Api
 
         // PUT api/<controller>/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody]string value)
+        public async Task<IActionResult> Put(int id, Inmueble inmueble)
         {
+            try
+            {
+                if (ModelState.IsValid && contexto.Inmuebles.AsNoTracking().Include(e => e.Duenio).FirstOrDefault(e => e.IdInmueble == id && e.Duenio.Email == User.Identity.Name) != null)
+                {
+                    inmueble.IdInmueble = id;
+                    contexto.Inmuebles.Update(inmueble);
+                    contexto.SaveChanges();
+                    return Ok(inmueble);
+                }
+                return BadRequest();
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex);
+            }
         }
 
         // DELETE api/<controller>/5
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public async Task<IActionResult> Delete(int id)
         {
+            try
+            {
+                var inmueble = contexto.Inmuebles.Include(e => e.Duenio).FirstOrDefault(e => e.IdInmueble == id && e.Duenio.Email == User.Identity.Name);
+                if (inmueble != null)
+                {
+                    contexto.Inmuebles.Remove(inmueble);
+                    contexto.SaveChanges();
+                    return Ok();
+                }
+                return BadRequest();
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex);
+            }
         }
     }
 }
