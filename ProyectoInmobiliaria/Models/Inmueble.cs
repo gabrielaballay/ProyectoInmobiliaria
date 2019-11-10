@@ -17,14 +17,14 @@ namespace ProyectoInmobiliaria.Models
         public string Uso { get; set; }
         [Required]
         public string Tipo { get; set; }
-        public int CantidadHabitaciones { get; set; }
+        public decimal CantidadHabitaciones { get; set; }
         [Required]
         public decimal Precio { get; set; }
         [Required]
         public string Estado { get; set; }
         [Display(Name = "Dueño")]
         public int IdPropietario { get; set; }
-        [ForeignKey("PropietarioId")]
+        [ForeignKey("IdPropietario")]
         public Propietario Duenio { get; set; }
     }
 }

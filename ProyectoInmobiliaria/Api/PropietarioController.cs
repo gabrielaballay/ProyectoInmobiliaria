@@ -18,6 +18,8 @@ using ProyectoInmobiliaria.Models;
 namespace ProyectoInmobiliaria.Api
 {
     [Route("api/[controller]")]
+    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+
     public class PropietarioController : Controller
     {
         private readonly DataContext contexto;
