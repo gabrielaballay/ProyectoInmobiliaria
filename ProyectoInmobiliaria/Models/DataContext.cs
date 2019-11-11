@@ -15,5 +15,7 @@ namespace ProyectoInmobiliaria.Models
         public DbSet<Propietario> Propietarios { get; set; }
         public DbSet<Inquilino> Inquilinos { get; set; }
         public DbSet<Inmueble> Inmuebles { get; set; }
+        public DbSet<Alquiler> Alquileres { get; set; }
+        public DbSet<Pago> Pagos { get; set; }        
     }
 }
