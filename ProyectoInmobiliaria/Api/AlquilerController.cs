@@ -17,12 +17,12 @@ namespace ProyectoInmobiliaria.Api
 {
     [Route("api/[controller]")]
     [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
-    public class ContratoController : ControllerBase
+    public class AlquilerController : ControllerBase
     {
         private readonly DataContext contexto;
         private readonly IConfiguration config;
 
-        public ContratoController(DataContext contexto, IConfiguration config)
+        public AlquilerController(DataContext contexto, IConfiguration config)
         {
             this.contexto = contexto;
             this.config = config;
